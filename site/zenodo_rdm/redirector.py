@@ -11,6 +11,8 @@ from flask import current_app, request, url_for
 from invenio_app_rdm.redirector.resource import RedirectorConfig, RedirectorResource
 from invenio_records_resources.services.base.config import FromConfig
 
+from site.zenodo_rdm.config import API_REDIRECTOR_RULES
+
 ZENODO_TYPE_SUBTYPE_LEGACY = {
     "publications": "publication",
     "books": "publication.book",
@@ -293,7 +295,7 @@ class ZenodoRedirectorConfig(RedirectorConfig):
     # Blueprint configuration
     blueprint_name = "zenodo_api_redirector"
 
-    rules = FromConfig("API_REDIRECTOR_RULES", {})
+    rules = API_REDIRECTOR_RULES
 
 
 def create_blueprint(app):
